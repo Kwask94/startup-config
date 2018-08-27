@@ -98,7 +98,7 @@ alias bi="brew install"
 
 # Git Alias =================================================================#
 alias g="git"
-alias g-d="git clone"
+alias g/="git clone https://github.com/"
 alias g-i="git init"
 alias g-c="git commit -m"
 alias g-a="git add -A"
