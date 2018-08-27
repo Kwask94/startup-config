@@ -1,3 +1,312 @@
+#============================================================================#
+#=============================== General ====================================#
+#============================================================================#
+
+# Sources ===================================================================#
+source $HOME/.zsh/aliases
+source $HOME/.zsh/common
+source $HOME/.zsh/colors
+source $HOME/.zsh/exports
+source $HOME/.zsh/functions
+source $HOME/.zsh/hash
+source $HOME/.zsh/path
+source $HOME/.zsh/vars
+
+# Options ===================================================================#
+setopt autocd               # .. is shortcut for cd .. (etc)
+setopt autoparamslash       # tab completing directory appends a slash
+setopt autopushd            # cd automatically pushes old dir onto dir stack
+setopt clobber              # allow clobbering with >, no need to use >!
+setopt correct              # command auto-correction
+setopt correctall           # argument auto-correction
+setopt noflowcontrol        # disable start (C-s) and stop (C-q) characters
+setopt nonomatch            # unmatched patterns are left unchanged
+setopt histignorealldups    # filter duplicates from history
+setopt histignorespace      # don't record commands starting with a space
+setopt histverify           # confirm history expansion (!$, !!, !foo)
+setopt ignoreeof            # prevent accidental C-d from exiting shell
+setopt interactivecomments  # allow comments, even in interactive shells
+setopt printexitvalue       # for non-zero exit status
+setopt pushdignoredups      # don't push multiple copies of same dir onto stack
+setopt pushdsilent          # don't print dir stack after pushing/popping
+setopt sharehistory         # share history across shells
+
+
+#============================================================================#
+#============================= General Alias ================================#
+#============================================================================#
+
+# Fasd Alias ================================================================#
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
+# Auto-Open Alias ===========================================================#
+alias -s vim=nvim       # Vim Files
+alias -s sh=vim         # Shell Files
+alias -s md=nvim        # Markdown Files
+alias -s rmd=nvim       # R Markdown Files
+alias -s tex=nvim       # Tex Files
+alias -s text=nvim      # Text Files
+alias -s pdf=           # Pdf Files
+alias -s mp4=mpv        # Video Files 
+alias -s mkv=mpv        # Video Files
+alias -s avi=mpv        # Video Files
+alias -s html=w3m       # Local Html
+
+# Application Alias =========================================================#
+alias mpv='open -na /Applications/mpv.app'    
+alias r="ranger"        # File Browser
+alias v="nvim"          # File Editor
+alias y="mpsyt"         # Youtube
+alias t="aria2c"        # Torrent 
+
+# Directory Alias ===========================================================#
+alias ~="cd ~"
+alias c="cd ~/.config/"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
+alias ld='ls -d .[^.]*'
+alias lf='ls'
+alias la='ls -a'
+
+# System Control Alias ======================================================#
+alias hidedesk="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesk="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+#============================================================================#
+#============================= CLI Alias ====================================#
+#============================================================================#
+
+# Shell Alias ===============================================================#
+alias lsa='ls -la'
+alias mkd="mkdir"
+alias cc='clear'
+alias e='exit'
+
+# Homebrew Alias ============================================================#
+alias b="brew"
+alias bi="brew install"
+
+# Git Alias =================================================================#
+alias g="git"
+alias g-d="git clone"
+alias g-i="git init"
+alias g-c="git commit -m"
+alias g-a="git add -A"
+alias g-s="git status"
+alias g-d="git diff"
+alias g-ra/="git remote add origin https://github.com/Kwask94/"
+alias g-pom="git push origin master"
+alias g-name="git config --global user.name "Kwask94""
+alias g-email="git config --global user.email dev94@nym.hush.com"
+
+# NPM Alias =================================================================#
+alias ni="npm install"
+alias nu="npm uninstall"
+alias nup="npm update"
+alias nri="rm -r node_modules && npm install"
+alias ncd="npm-check -su"
+
+# Taskworrior Alias =========================================================#
+alias t="task"
+alias tn="task add"
+alias tl="task list"
+
+# Youtube-dl Alias ==========================================================#
+alias yt="youtube-dl --add-metadata -ic" 
+alias yta="youtube-dl --add-metadata -xic"
+
+# Tampletes Clone Alias ======================================================#
+alias Txa="cp ~/Documents/LaTeX/article.tex"
+alias Txs="cp ~/Documents/LaTeX/beamer.tex"
+alias Txh="cp ~/Documents/LaTeX/handout.tex"
+alias TC='texclear'
+
+# Themes ============================================================#
+
+# Light Theme
+alias c1='color classic_light'  
+alias c2='color mexico-light'
+alias c3='color harmonic-light'
+alias c4='color solarized-light'
+alias c5='color summerfruit-light'
+alias c6='color tomorrow'
+alias c7='color atelier-estuary-light'
+alias c8='color atelier-forest-light'
+# Dark Themes
+alias cd1='color default-dark'
+alias cd2='color eighties'
+alias cd3='color gruvbox-dark-soft'
+alias cd4='color harmonic-light'
+alias cd5='color material-darker'
+alias cd6='color ocean'
+alias cd7='color snazzy'
+alias cd8='color tomorrow-night'
+alias cd9='color twilight'
+alias cd10='color black-metal-bathory'
+alias cd11='color black-metal-khold'
+alias cd11='color chalk'
+#============================================================================#
+#============================= Lizy Accses ==================================#
+#============================================================================#
+
+# configs-files Alias =======================================================# 
+alias fz="nvim ~/main/startup-config/roles/dotfiles/files/.zshrc"
+alias fv="nvim ~/main/startup-config/roles/dotfiles/files/.vim/init.vim"
+alias ft="nvim ~/main/startup-config/roles/dotfiles/files/.tmux.conf"
+alias fc="nvim ~/.chunkwmrc"
+alias fs="nvim ~/.skhdrc"
+alias fq="nvim ~/.qutebrowser/config.py"
+
+# sourcing ===================================================================#
+alias sfz="source ~/main/startup-config/roles/dotfiles/files/.zshrc"
+alias sfc="brew services restart chunkwm"
+alias sfs="brew services restart skhd"
+alias dot="cd ~/main/startup-config/roles/dotfiles/files"
+
+# Echo Alias ================================================================#
+
+alias pa=write
+function write (){echo "$1">>~/.prince}
+
+# Takes a hex color in the form of "RRGGBB" and outputs its luma (0-255, where
+# 0 is black and 255 is white).
+#
+# Based on: https://github.com/lencioni/dotfiles/blob/b1632a04/.shells/colors
+luma() {
+  local COLOR_HEX=$1
+
+  if [ -z "$COLOR_HEX" ]; then
+    echo "Missing argument hex color (RRGGBB)"
+    return 1
+  fi
+
+  # Extract hex channels from background color (RRGGBB).
+  local COLOR_HEX_RED=$(echo "$COLOR_HEX" | cut -c 1-2)
+  local COLOR_HEX_GREEN=$(echo "$COLOR_HEX" | cut -c 3-4)
+  local COLOR_HEX_BLUE=$(echo "$COLOR_HEX" | cut -c 5-6)
+
+  # Convert hex colors to decimal.
+  local COLOR_DEC_RED=$((16#$COLOR_HEX_RED))
+  local COLOR_DEC_GREEN=$((16#$COLOR_HEX_GREEN))
+  local COLOR_DEC_BLUE=$((16#$COLOR_HEX_BLUE))
+
+  # Calculate perceived brightness of background per ITU-R BT.709
+  # https://en.wikipedia.org/wiki/Rec._709#Luma_coefficients
+  # http://stackoverflow.com/a/12043228/18986
+  local COLOR_LUMA_RED=$((0.2126 * $COLOR_DEC_RED))
+  local COLOR_LUMA_GREEN=$((0.7152 * $COLOR_DEC_GREEN))
+  local COLOR_LUMA_BLUE=$((0.0722 * $COLOR_DEC_BLUE))
+
+  local COLOR_LUMA=$(($COLOR_LUMA_RED + $COLOR_LUMA_GREEN + $COLOR_LUMA_BLUE))
+
+  echo "$COLOR_LUMA"
+}
+
+color() {
+  local SCHEME="$1"
+  local BASE16_DIR=~/.config/base16-shell/scripts
+  local BASE16_CONFIG_PREVIOUS="${BASE16_CONFIG}.previous"
+  local STATUS=0
+
+  if [ $# -eq 0 ]; then
+    if [ -s "$BASE16_CONFIG" ]; then
+      cat ~/.config/nvim/.base16
+      return
+    else
+      SCHEME=help
+    fi
+  fi
+
+  __color() {
+    SCHEME=$1
+    FILE="$BASE16_DIR/base16-$SCHEME.sh"
+    if [[ -e "$FILE" ]]; then
+      local BG=$(grep color_background= "$FILE" | cut -d \" -f2 | sed -e 's#/##g')
+      local LUMA=$(luma "$BG")
+      local LIGHT=$((LUMA > 127.5))
+      local BACKGROUND=dark
+      if [ "$LIGHT" -eq 1 ]; then
+        BACKGROUND=light
+      fi
+
+      if [ -e "$BASE16_CONFIG" ]; then
+        cp "$BASE16_CONFIG" "$BASE16_CONFIG_PREVIOUS"
+      fi
+
+      echo "$SCHEME" >! "$BASE16_CONFIG"
+      echo "$BACKGROUND" >> "$BASE16_CONFIG"
+      sh "$FILE"
+
+      if [ -n "$TMUX" ]; then
+        local CC=$(grep color18= "$FILE" | cut -d \" -f2 | sed -e 's#/##g')
+        if [ -n "$BG" -a -n "$CC" ]; then
+          command tmux set -a window-active-style "bg=#$BG"
+          command tmux set -a window-style "bg=#$CC"
+          command tmux set -g pane-active-border-bg "#$CC"
+          command tmux set -g pane-border-bg "#$CC"
+        fi
+      fi
+    else
+      echo "Scheme '$SCHEME' not found in $BASE16_DIR"
+      STATUS=1
+    fi
+  }
+
+  case "$SCHEME" in
+  help)
+    echo 'color [tomorrow-night|ocean|grayscale-light|...]'
+    echo
+    echo 'Available schemes:'
+    color ls
+    return
+    ;;
+  ls)
+    find "$BASE16_DIR" -name 'base16-*.sh' | \
+      sed -E 's|.+/base16-||' | \
+      sed -E 's/\.sh//' | \
+      column
+      ;;
+  -)
+    if [[ -s "$BASE16_CONFIG_PREVIOUS" ]]; then
+      local PREVIOUS_SCHEME=$(head -1 "$BASE16_CONFIG_PREVIOUS")
+      __color "$PREVIOUS_SCHEME"
+    else
+      echo "warning: no previous config found at $BASE16_CONFIG_PREVIOUS"
+      STATUS=1
+    fi
+    ;;
+  *)
+    __color "$SCHEME"
+    ;;
+  esac
+
+  unfunction __color
+  return $STATUS
+}
+
+function () {
+  if [[ -s "$BASE16_CONFIG" ]]; then
+    local SCHEME=$(head -1 "$BASE16_CONFIG")
+    local BACKGROUND=$(sed -n -e '2 p' "$BASE16_CONFIG")
+    if [ "$BACKGROUND" != 'dark' -a "$BACKGROUND" != 'light' ]; then
+      echo "warning: unknown background type in $BASE16_CONFIG"
+    fi
+    color "$SCHEME"
+  else
+    # Default.
+    color tomorrow-night
+  fi
+}
 #
 # Teh H4xx
 #
@@ -131,28 +440,6 @@ export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 
 #
-# Options
-#
-
-setopt autocd               # .. is shortcut for cd .. (etc)
-setopt autoparamslash       # tab completing directory appends a slash
-setopt autopushd            # cd automatically pushes old dir onto dir stack
-setopt clobber              # allow clobbering with >, no need to use >!
-setopt correct              # command auto-correction
-setopt correctall           # argument auto-correction
-setopt noflowcontrol        # disable start (C-s) and stop (C-q) characters
-setopt nonomatch            # unmatched patterns are left unchanged
-setopt histignorealldups    # filter duplicates from history
-setopt histignorespace      # don't record commands starting with a space
-setopt histverify           # confirm history expansion (!$, !!, !foo)
-setopt ignoreeof            # prevent accidental C-d from exiting shell
-setopt interactivecomments  # allow comments, even in interactive shells
-setopt printexitvalue       # for non-zero exit status
-setopt pushdignoredups      # don't push multiple copies of same dir onto stack
-setopt pushdsilent          # don't print dir stack after pushing/popping
-setopt sharehistory         # share history across shells
-
-#
 # Bindings
 #
 
@@ -192,15 +479,6 @@ bindkey '^Z' fg-bg
 #
 # Other
 #
-
-source $HOME/.zsh/aliases
-source $HOME/.zsh/common
-source $HOME/.zsh/colors
-source $HOME/.zsh/exports
-source $HOME/.zsh/functions
-source $HOME/.zsh/hash
-source $HOME/.zsh/path
-source $HOME/.zsh/vars
 
 #
 # Third-party
@@ -324,7 +602,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=59'
 
 # Uncomment this to get syntax highlighting:
-# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #
 # /etc/motd
